@@ -1,0 +1,35 @@
+name: 'Publish Docker Action'
+description: 'Build, tag and publish docker image to your docker registry'
+author: 'jerray'
+inputs:
+  username:
+    description: 'Username used to login docker registry'
+    required: true
+  password:
+    description: 'Password used to login docker registry'
+    required: true
+  registry:
+    description: 'Docker registry server address'
+  file:
+    description: 'Docker file used to build image'
+    default: 'Dockerfile'
+  path:
+    description: 'Docker build context'
+    default: '.'
+  tags:
+    description: 'Static image tag list, separated by comma'
+    default: 'latest'
+  allow_pull_request:
+    description: 'If allow pull request trigger build'
+    default: false
+  auto_tag:
+    description: 'Generate tags by conditions automatically'
+    default: false
+  cache:
+    description: 'Images to consider as cache sources'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'anchor'
+  color: 'blue'
