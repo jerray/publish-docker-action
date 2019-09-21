@@ -1,5 +1,7 @@
 name: Main
-on: [push]
+on:
+  - push
+  - create
 jobs:
   Build:
     name: Build Job
