@@ -26,6 +26,7 @@ type Inputs struct {
 	Dockerfile       string   `env:"INPUT_FILE" envDefault:"Dockerfile"`
 	Path             string   `env:"INPUT_PATH" envDefault:"."`
 	Tags             []string `env:"INPUT_TAGS" envDefault:"latest" envSeparator:","`
+	BuildArgs        []string `env:"INPUT_BUILD_ARGS" envSeparator:","`
 	AllowPullRequest bool     `env:"INPUT_ALLOW_PULL_REQUEST"`
 	AutoTag          bool     `env:"INPUT_AUTO_TAG"`
 }

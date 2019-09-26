@@ -15,6 +15,10 @@ func build(inputs Inputs) error {
 		args = append(args, "--from-cache", inputs.Cache)
 	}
 
+	for _, v := range inputs.BuildArgs {
+		args = append(args, "--build-arg", v)
+	}
+
 	for _, tag := range inputs.Tags {
 		args = append(args, "--tag", tag)
 	}

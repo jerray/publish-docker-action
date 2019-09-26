@@ -19,6 +19,8 @@ inputs:
   tags:
     description: 'Static image tag list, separated by comma'
     default: 'latest'
+  build_args:
+    description: 'Docker build-time variables, separated by comma'
   allow_pull_request:
     description: 'If allow pull request trigger build'
     default: false
@@ -29,7 +31,7 @@ inputs:
     description: 'Images to consider as cache sources'
 runs:
   using: 'docker'
-  image: 'docker://jerray/publish-docker-action:1.0.1'
+  image: 'docker://jerray/publish-docker-action:1.0.2'
 branding:
   icon: 'anchor'
   color: 'blue'

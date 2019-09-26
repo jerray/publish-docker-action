@@ -86,3 +86,21 @@ Auto tagging will override `with.tags` list.
 ### Cache
 
 Cache image can be used to build image. Just provide `with.cache` argument.
+
+### Build Args
+
+Use `with.build_args` to provide docker build-time variables. Multiple variables must be separated by comma. 
+
+```yaml
+- uses: jerray/publish-docker-action@master
+  with:
+    username: ${{ secrets.DOCKER_USERNAME }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+    registry: docker.pkg.github.com
+    repository: jerray/publish-docker-action
+    build_args: HTTP_PROXY=http://127.0.0.1,USER=nginx
+```
+
+## Note
+
+Please use the latest released version rather than master.
