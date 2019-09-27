@@ -1,8 +1,8 @@
 # Publish Docker Action
 
-![](https://github.com/jerray/publish-docker-action/workflows/Main/badge.svg)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jerray/publish-docker-action?logo=github)
-![Docker Pulls](https://img.shields.io/docker/pulls/jerray/publish-docker-action?logo=docker)
+[![GitHub Action](https://github.com/jerray/publish-docker-action/workflows/Main/badge.svg)](https://github.com/jerray/publish-docker-action/actions?workflow=Main)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jerray/publish-docker-action?logo=github)](https://github.com/jerray/publish-docker-action/releases)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jerray/publish-docker-action?logo=docker)](https://hub.docker.com/r/jerray/publish-docker-action)
 
 Publish Docker Action is used to build, tag and publish docker image to your docker registry.
 
