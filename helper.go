@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -10,6 +11,26 @@ const (
 	RefTypeTag    = "tag"
 	RefTypePull   = "pull"
 )
+
+func resolveInputs(github GitHub, inputs *Inputs) error {
+	if inputs.Repository == "" {
+		inputs.Repository = github.Repository
+	}
+
+	typ, name := resolveRef(github)
+
+	if typ == RefTypePull && !inputs.AllowPullRequest {
+		return fmt.Errorf("if you want to build a pull request, please set `with.allow_pull_request` to `true`")
+	}
+
+	resolveAutoTag(typ, name, inputs)
+
+	for i, t := range inputs.Tags {
+		inputs.Tags[i] = strings.Join([]string{inputs.Repository, t}, ":")
+	}
+
+	return nil
+}
 
 func resolveRef(github GitHub) (string, string) {
 	var typ, name string

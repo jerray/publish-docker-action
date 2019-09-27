@@ -1,11 +1,6 @@
 package main
 
-import (
-	"os"
-	"os/exec"
-)
-
-func build(inputs Inputs) error {
+func build(cmd Commander, inputs Inputs) error {
 	args := []string{
 		"build",
 		"--file", inputs.Dockerfile,
@@ -25,8 +20,5 @@ func build(inputs Inputs) error {
 
 	args = append(args, inputs.Path)
 
-	cmd := exec.Command("docker", args...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	return cmd.Run()
+	return cmd.Run("docker", args...)
 }

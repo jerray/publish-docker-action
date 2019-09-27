@@ -47,10 +47,6 @@ func LoadOptions() (*Options, error) {
 		return nil, fmt.Errorf("failed to parse inputs: %s", err)
 	}
 
-	if inputs.Repository == "" {
-		inputs.Repository = github.Repository
-	}
-
 	return &Options{
 		GitHub: github,
 		Inputs: inputs,

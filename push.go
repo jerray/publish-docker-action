@@ -1,16 +1,8 @@
 package main
 
-import (
-	"os"
-	"os/exec"
-)
-
-func push(inputs Inputs) error {
+func push(cmd Commander, inputs Inputs) error {
 	for _, tag := range inputs.Tags {
-		cmd := exec.Command("docker", "push", tag)
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		err := cmd.Run()
+		err := cmd.Run("docker", "push", tag)
 		if err != nil {
 			return err
 		}
