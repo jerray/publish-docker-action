@@ -1,6 +1,7 @@
 # Publish Docker Action
 
 [![GitHub Action](https://github.com/jerray/publish-docker-action/workflows/Main/badge.svg)](https://github.com/jerray/publish-docker-action/actions?workflow=Main)
+[![codecov](https://codecov.io/gh/jerray/publish-docker-action/branch/master/graph/badge.svg)](https://codecov.io/gh/jerray/publish-docker-action)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jerray/publish-docker-action?logo=github)](https://github.com/jerray/publish-docker-action/releases)
 [![Docker Pulls](https://img.shields.io/docker/pulls/jerray/publish-docker-action?logo=docker)](https://hub.docker.com/r/jerray/publish-docker-action)
 
