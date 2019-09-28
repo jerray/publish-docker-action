@@ -5,11 +5,11 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jerray/publish-docker-action?logo=github)](https://github.com/jerray/publish-docker-action/releases)
 [![Docker Pulls](https://img.shields.io/docker/pulls/jerray/publish-docker-action?logo=docker)](https://hub.docker.com/r/jerray/publish-docker-action)
 
-Publish Docker Action is used to build, tag and publish docker image to your docker registry.
+Publish Docker Action builds, creates tags and pushes docker image to your docker registry.
 
 ## Usage
 
-This simple example will use `Dockerfile` in your workspace to build image, attach the `latest`
+This simple example uses `Dockerfile` in your workspace to build image, attach the `latest`
 tag and push to docker default registry (docker.io). Repository name is your GitHub repository
 name by default.
 
@@ -20,12 +20,12 @@ name by default.
     password: ${{ secrets.DOCKER_PASSWORD }}
 ```
 
-Use `file` and `path` arguments to set docker build file or build context if they are not placed
-in the default workspace direcotry.
+Use `file` and `path` arguments to set docker build file or build context if they are not in the default workspace.
 
 ### Set up registry and repository name
 
-Registry and repository name can be changed with `registry` and `repository` arguments. For example:
+You can set docker registry with `registry` argument. Change docker repository name with `respository` argument.
+For example:
 
 ```yaml
 - uses: jerray/publish-docker-action@master
@@ -40,7 +40,7 @@ Registry and repository name can be changed with `registry` and `repository` arg
 
 #### Static Tag List
 
-You can use static tag list by specify `tags` arguments. Tag names must be separated by comma.
+You can use static tag list by providing `tags` argument. Concat multiple tag names with commas.
 
 ```yaml
 - uses: jerray/publish-docker-action@master
@@ -52,7 +52,7 @@ You can use static tag list by specify `tags` arguments. Tag names must be separ
     tags: latest,newest,master
 ```
 
-Example above will build image and create three tags, and push all of them to the registry.
+This example builds the image, creates three tags, and pushes all of them to the registry.
 
 * `jerray/publish-docker-action:latest`
 * `jerray/publish-docker-action:newest`
@@ -60,21 +60,23 @@ Example above will build image and create three tags, and push all of them to th
 
 #### Auto Tag
 
-This action can generate image tag automatically base on the different `refs` type.
+This action can generate image tags automatically by different `refs` types:
 
-If the `refs` refers to a branch, it uses the branch name as docker image name (`master` branch is renamed to `latest`).
+* branch: uses the branch name as docker tag name (`master` branch is renamed to `latest`).
+* pull request: attaches a `pr-` prefix to branch name asdocker image tag. To allow pull request build, you must set `with.allow_pull_request` to `true`.
+* tag: checks if the tag name is valid semantic version format. If not, it uses git tag name as docker image tag directly. Else it generates three tags based on the version number,each followed with pre-release information.
 
-If the `refs` refers to a pull request, it attaches a `pr-` prefix to branch name as
-docker image tag. To allow pull request build, you must set `with.allow_pull_request` to `true`.
+Examples:
 
-When `refs` refers to a tag, it checks if the tag name is valid semantic version. If not, it uses
-tag name as docker image tag directly. Else it generates three tags based on the version number,
-each followed with pre-release information if there is any. For example:
-
-* git tag `1.0.0` is mapped to `1`, `1.0`, `1.0.0`
-* git tag `v1.0.0` is the same as above (prefix `v` is allowed)
-* git tag `v1.0.0-rc1` is mapped to `1-rc1`, `1.0-rc1`, `1.0.0-rc1`
-* git tag `20190921-actions` is not a valid semantic version string, so docker image tag is just the same
+| Git | Docker Tag |
+| --- | --- |
+| branch `master` | `latest` |
+| branch  `2019/09/28-new-feature` | `2019-09-28-new-feature` (`/` is replaced to `-`) |
+| pull request `master` | `pr-master` |
+| tag `1.0.0` | `1`, `1.0`, `1.0.0` |
+| tag `v1.0.0` | `1`, `1.0`, `1.0.0`  (prefix `v` is allowed) |
+| tag `v1.0.0-rc1` | `1-rc1`, `1.0-rc1`, `1.0.0-rc1` |
+| tag `20190921-actions` | `20190921-actions` (not semantic version) |
 
 ```yaml
 - uses: jerray/publish-docker-action@master
@@ -90,7 +92,7 @@ Auto tagging will override `with.tags` list.
 
 ### Cache
 
-Cache image can be used to build image. Just provide `with.cache` argument.
+Provide `with.cache` argument to build from cache.
 
 ### Build Args
 
