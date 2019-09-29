@@ -60,23 +60,7 @@ This example builds the image, creates three tags, and pushes all of them to the
 
 #### Auto Tag
 
-This action can generate image tags automatically by different `refs` types:
-
-* branch: uses the branch name as docker tag name (`master` branch is renamed to `latest`).
-* pull request: attaches a `pr-` prefix to branch name asdocker image tag. To allow pull request build, you must set `with.allow_pull_request` to `true`.
-* tag: checks if the tag name is valid semantic version format. If not, it uses git tag name as docker image tag directly. Else it generates three tags based on the version number,each followed with pre-release information.
-
-Examples:
-
-| Git | Docker Tag |
-| --- | --- |
-| branch `master` | `latest` |
-| branch  `2019/09/28-new-feature` | `2019-09-28-new-feature` (`/` is replaced to `-`) |
-| pull request `master` | `pr-master` |
-| tag `1.0.0` | `1`, `1.0`, `1.0.0` |
-| tag `v1.0.0` | `1`, `1.0`, `1.0.0`  (prefix `v` is allowed) |
-| tag `v1.0.0-rc1` | `1-rc1`, `1.0-rc1`, `1.0.0-rc1` |
-| tag `20190921-actions` | `20190921-actions` (not semantic version) |
+Set `with.auto_tag: true` to allow action generate docker image tags automatically.
 
 ```yaml
 - uses: jerray/publish-docker-action@master
@@ -87,6 +71,24 @@ Examples:
     repository: jerray/publish-docker-action
     auto_tag: true
 ```
+
+Generated tags vary with `refs` types:
+
+* branch: uses the branch name as docker tag name (`master` branch is renamed to `latest`).
+* pull request: attaches a `pr-` prefix to branch name asdocker image tag. To allow pull request build, you must set `with.allow_pull_request` to `true`.
+* tag: checks if the tag name is valid semantic version format (prefix `v` is allowed). If not, it uses git tag name as docker image tag directly. Else it generates three tags based on the version number, each followed with pre-release information.
+
+Examples:
+
+| Git | Docker Tag |
+| --- | --- |
+| branch `master` | `latest` |
+| branch  `2019/09/28-new-feature` | `2019-09-28-new-feature` (`/` is replaced to `-`) |
+| pull request `master` | `pr-master` |
+| tag `1.0.0` | `1`, `1.0`, `1.0.0` |
+| tag `v1.0.0` | `1`, `1.0`, `1.0.0` |
+| tag `v1.0.0-rc1` | `1-rc1`, `1.0-rc1`, `1.0.0-rc1` |
+| tag `20190921-actions` | `20190921-actions` (not semantic version) |
 
 Auto tagging will override `with.tags` list.
 
