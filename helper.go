@@ -17,6 +17,10 @@ func resolveInputs(github GitHub, inputs *Inputs) error {
 		inputs.Repository = github.Repository
 	}
 
+	if inputs.Registry != "" && !strings.HasPrefix(inputs.Repository, inputs.Registry) {
+		inputs.Repository = strings.Join([]string{inputs.Registry, inputs.Repository}, "/")
+	}
+
 	typ, name := resolveRef(github)
 
 	if typ == RefTypePull && !inputs.AllowPullRequest {
