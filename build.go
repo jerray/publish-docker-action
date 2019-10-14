@@ -1,11 +1,15 @@
 package main
 
+import  (
+	"strings"
+)
+
 func build(cmd Commander, inputs Inputs) error {
 	args := []string{
 		"build",
 		"--file", inputs.Dockerfile,
 	}
-
+	args = strings.toLower(args)
 	if inputs.Cache != "" {
 		args = append(args, "--from-cache", inputs.Cache)
 	}
