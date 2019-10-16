@@ -1,5 +1,9 @@
 package main
 
+import  (
+	"strings"
+)
+
 func build(cmd Commander, inputs Inputs) error {
 	args := []string{
 		"build",
@@ -15,6 +19,7 @@ func build(cmd Commander, inputs Inputs) error {
 	}
 
 	for _, tag := range inputs.Tags {
+		tag = strings.toLower(tag)
 		args = append(args, "--tag", tag)
 	}
 
