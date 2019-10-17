@@ -7,7 +7,7 @@ func build(cmd Commander, inputs Inputs) error {
 	}
 
 	if inputs.Cache != "" {
-		args = append(args, "--from-cache", inputs.Cache)
+		args = append(args, "--cache-from", inputs.Cache)
 	}
 
 	for _, v := range inputs.BuildArgs {
