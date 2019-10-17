@@ -36,6 +36,8 @@ For example:
     repository: jerray/publish-docker-action
 ```
 
+This will build and push the tag `docker.pkg.github.com/jerray/publish-docker-action:latest`.
+
 ### Tags
 
 #### Static Tag List
@@ -54,9 +56,9 @@ You can use static tag list by providing `tags` argument. Concat multiple tag na
 
 This example builds the image, creates three tags, and pushes all of them to the registry.
 
-* `jerray/publish-docker-action:latest`
-* `jerray/publish-docker-action:newest`
-* `jerray/publish-docker-action:master`
+* `docker.pkg.github.com/jerray/publish-docker-action:latest`
+* `docker.pkg.github.com/jerray/publish-docker-action:newest`
+* `docker.pkg.github.com/jerray/publish-docker-action:master`
 
 #### Auto Tag
 

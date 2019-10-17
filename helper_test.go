@@ -44,6 +44,35 @@ func Test_resolveInputs(t *testing.T) {
 			github: GitHub{
 				Repository: "username/repo",
 				Commit:     "45ba489c4f97b5f854ebaba6454b51fa",
+				Ref:        "refs/heads/master",
+			},
+			inputs: &Inputs{
+				Registry: "other.docker.io",
+				Tags:     []string{"my_tag"},
+			},
+			hasError:   false,
+			tags:       []string{"other.docker.io/username/repo:my_tag"},
+			repository: "other.docker.io/username/repo",
+		},
+		{
+			github: GitHub{
+				Repository: "username/repo",
+				Commit:     "45ba489c4f97b5f854ebaba6454b51fa",
+				Ref:        "refs/heads/master",
+			},
+			inputs: &Inputs{
+				Registry:   "other.docker.io",
+				Repository: "other.docker.io/my/repo",
+				Tags:       []string{"my_tag"},
+			},
+			hasError:   false,
+			tags:       []string{"other.docker.io/my/repo:my_tag"},
+			repository: "other.docker.io/my/repo",
+		},
+		{
+			github: GitHub{
+				Repository: "username/repo",
+				Commit:     "45ba489c4f97b5f854ebaba6454b51fa",
 				Ref:        "refs/pull/master",
 			},
 			inputs: &Inputs{
