@@ -45,7 +45,7 @@ func Test_build(t *testing.T) {
 				Cache:      "cached_image:latest",
 			},
 			expect: commandArguments{"docker", []string{"build", "--file", "Dockerfile",
-				"--from-cache", "cached_image:latest",
+				"--cache-from", "cached_image:latest",
 				"."}},
 		},
 
