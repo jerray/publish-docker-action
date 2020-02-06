@@ -112,6 +112,10 @@ Use `with.build_args` to provide docker build-time variables. Multiple variables
     build_args: HTTP_PROXY=http://127.0.0.1,USER=nginx
 ```
 
+### Target for Multi-Stage Builds
+
+Provide `with.target` argument to set `--target` flag for docker build.
+
 ## Note
 
 Please use the latest released version rather than master.
