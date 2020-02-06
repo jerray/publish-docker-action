@@ -54,7 +54,7 @@ func TestLoadOptions(t *testing.T) {
 					Path:             ".",
 					Tags:             []string{"latest"},
 					BuildArgs:        nil,
-					Target:        		"",
+					Target:           "",
 					AllowPullRequest: false,
 					AutoTag:          false,
 				},
