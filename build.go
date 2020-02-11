@@ -18,6 +18,10 @@ func build(cmd Commander, inputs Inputs) error {
 		args = append(args, "--tag", tag)
 	}
 
+	if inputs.Target != "" {
+		args = append(args, "--target", inputs.Target)
+	}
+
 	args = append(args, inputs.Path)
 
 	return cmd.Run("docker", args...)

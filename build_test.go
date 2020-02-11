@@ -76,6 +76,16 @@ func Test_build(t *testing.T) {
 				".",
 			}},
 		},
+
+		// change target
+		{
+			inputs: Inputs{
+				Dockerfile: "Dockerfile",
+				Path:       ".",
+				Target:     "builder",
+			},
+			expect: commandArguments{"docker", []string{"build", "--file", "Dockerfile", "--target", "builder", "."}},
+		},
 	}
 	for _, c := range cases {
 		cmd := &mockCommander{}

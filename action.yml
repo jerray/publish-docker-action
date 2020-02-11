@@ -21,6 +21,8 @@ inputs:
     default: 'latest'
   build_args:
     description: 'Docker build-time variables, separated by comma'
+  target:
+    description: 'Docker build target (stage name) for multi-stage builds'
   allow_pull_request:
     description: 'If allow pull request trigger build'
     default: false
