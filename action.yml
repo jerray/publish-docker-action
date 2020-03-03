@@ -10,27 +10,39 @@ inputs:
     required: true
   registry:
     description: 'Docker registry server address'
+    required: false
   file:
     description: 'Docker file used to build image'
     default: 'Dockerfile'
+    required: false
   path:
     description: 'Docker build context'
     default: '.'
+    required: false
   tags:
     description: 'Static image tag list, separated by comma'
     default: 'latest'
+    required: false
   build_args:
     description: 'Docker build-time variables, separated by comma'
+    required: false
   target:
     description: 'Docker build target (stage name) for multi-stage builds'
+    required: false
   allow_pull_request:
     description: 'If allow pull request trigger build'
-    default: false
+    default: 'false'
+    required: false
   auto_tag:
     description: 'Generate tags by conditions automatically'
-    default: false
+    default: 'false'
+    required: false
   cache:
     description: 'Images to consider as cache sources'
+    required: false
+outputs:
+  tag:
+    description: 'Tag name produced by activating the auto_tag option'
 runs:
   using: 'docker'
   image: 'docker://jerray/publish-docker-action:1.0.3'

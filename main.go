@@ -29,4 +29,8 @@ func main() {
 		fmt.Printf("failed to push image: %s", err)
 		os.Exit(1)
 	}
+
+	if inputs.AutoTag {
+		setOutput("tag", inputs.Tags[len(inputs.Tags)-1])
+	}
 }

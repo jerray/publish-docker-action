@@ -94,6 +94,25 @@ Examples:
 
 Auto tagging will override `with.tags` list.
 
+Additionally, there's an output value `tag` you can use [in your next steps](https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context).
+
+```yaml
+- id: build
+  uses: jerray/publish-docker-action@master
+  with:
+    username: ${{ secrets.DOCKER_USERNAME }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+    registry: docker.pkg.github.com
+    repository: jerray/publish-docker-action
+    auto_tag: true
+
+- id: deploy
+  env:
+    NEW_VERSION: ${{ steps.build.outpus.tag }}
+  run: |
+    docker pull $NEW_VERSION
+```
+
 ### Cache
 
 Provide `with.cache` argument to build from cache.
