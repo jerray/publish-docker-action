@@ -24,7 +24,7 @@ Use `file` and `path` arguments to set docker build file or build context if the
 
 ### Set up registry and repository name
 
-You can set docker registry with `registry` argument. Change docker repository name with `respository` argument.
+You can set docker registry with `registry` argument. Change docker repository name with `repository` argument.
 For example:
 
 ```yaml
@@ -108,7 +108,7 @@ Additionally, there's an output value `tag` you can use [in your next steps](htt
 
 - id: deploy
   env:
-    NEW_VERSION: ${{ steps.build.outpus.tag }}
+    NEW_VERSION: ${{ steps.build.outputs.tag }}
   run: |
     docker pull $NEW_VERSION
 ```
