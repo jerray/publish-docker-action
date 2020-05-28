@@ -11,6 +11,9 @@ inputs:
   registry:
     description: 'Docker registry server address'
     required: false
+  repository:
+    description: 'Docker repository name'
+    required: false
   file:
     description: 'Docker file used to build image'
     default: 'Dockerfile'
