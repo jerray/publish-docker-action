@@ -48,7 +48,7 @@ outputs:
     description: 'Tag name produced by activating the auto_tag option'
 runs:
   using: 'docker'
-  image: 'docker://jerray/publish-docker-action:1.0.4'
+  image: 'docker://jerray/publish-docker-action:1.0.5'
 branding:
   icon: 'anchor'
   color: 'blue'
