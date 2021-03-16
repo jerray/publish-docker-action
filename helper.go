@@ -63,7 +63,7 @@ func resolveAutoTag(typ, name string, inputs *Inputs) {
 	name = strings.Replace(name, "/", "-", -1)
 	switch typ {
 	case RefTypeBranch:
-		if name == "master" {
+		if name == "master" || name == "main" {
 			name = "latest"
 		}
 		tags = append(tags, name)
