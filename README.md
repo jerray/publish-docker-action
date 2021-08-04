@@ -16,7 +16,7 @@ tag and push to docker default registry (docker.io). Repository name is your Git
 name by default.
 
 ```yaml
-- uses: hartmutobendorf/publish-docker-action@main
+- uses: hartmutobendorf/publish-docker-action@master
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
@@ -30,7 +30,7 @@ You can set docker registry with `registry` argument. Change docker repository n
 For example:
 
 ```yaml
-- uses: hartmutobendorf/publish-docker-action@main
+- uses: hartmutobendorf/publish-docker-action@master
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
@@ -47,7 +47,7 @@ This will build and push the tag `docker.pkg.github.com/jerray/publish-docker-ac
 You can use static tag list by providing `tags` argument. Concat multiple tag names with commas.
 
 ```yaml
-- uses: hartmutobendorf/publish-docker-action@main
+- uses: hartmutobendorf/publish-docker-action@master
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
@@ -67,7 +67,7 @@ This example builds the image, creates three tags, and pushes all of them to the
 Set `with.auto_tag: true` to allow action generate docker image tags automatically.
 
 ```yaml
-- uses: hartmutobendorf/publish-docker-action@main
+- uses: hartmutobendorf/publish-docker-action@master
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
@@ -100,7 +100,7 @@ Additionally, there's an output value `tag` you can use [in your next steps](htt
 
 ```yaml
 - id: build
-  uses: hartmutobendorf/publish-docker-action@main
+  uses: hartmutobendorf/publish-docker-action@master
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
@@ -124,7 +124,7 @@ Provide `with.cache` argument to build from cache.
 Use `with.build_args` to provide docker build-time variables. Multiple variables must be separated by comma. 
 
 ```yaml
-- uses: hartmutobendorf/publish-docker-action@main
+- uses: hartmutobendorf/publish-docker-action@master
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
