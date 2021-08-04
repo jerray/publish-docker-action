@@ -1,4 +1,4 @@
-module github.com/jerray/publish-docker-action
+module github.com/Chainstep/publish-docker-action
 
 go 1.16
 

@@ -1,5 +1,7 @@
 # Publish Docker Action
 
+Based on https://github.com/jerray/publish-docker-action, this fixes the problem of building docker and pushing docker images.
+
 [![GitHub Action](https://github.com/jerray/publish-docker-action/workflows/Main/badge.svg)](https://github.com/jerray/publish-docker-action/actions?workflow=Main)
 [![codecov](https://codecov.io/gh/jerray/publish-docker-action/branch/master/graph/badge.svg)](https://codecov.io/gh/jerray/publish-docker-action)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jerray/publish-docker-action?logo=github)](https://github.com/jerray/publish-docker-action/releases)
