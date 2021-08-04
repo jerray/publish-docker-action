@@ -83,6 +83,20 @@ func Test_resolveInputs(t *testing.T) {
 			tags:       []string{},
 			repository: "username/repo",
 		},
+		{
+			github: GitHub{
+				Repository: "Organization/username/repo",
+				Commit:     "45ba489c4f97b5f854ebaba6454b51fa",
+				Ref:        "refs/pull/master",
+			},
+			inputs: &Inputs{
+				Tags:             []string{},
+				AllowPullRequest: false,
+			},
+			hasError:   true,
+			tags:       []string{},
+			repository: "organization/username/repo",
+		},
 	}
 	for _, c := range cases {
 		err := resolveInputs(c.github, c.inputs)

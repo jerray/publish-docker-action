@@ -14,7 +14,7 @@ const (
 
 func resolveInputs(github GitHub, inputs *Inputs) error {
 	if inputs.Repository == "" {
-		inputs.Repository = github.Repository
+		inputs.Repository = strings.ToLower(github.Repository)
 	}
 
 	if inputs.Registry != "" && !strings.HasPrefix(inputs.Repository, inputs.Registry) {
