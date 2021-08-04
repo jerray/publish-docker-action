@@ -14,7 +14,7 @@ const (
 
 func resolveInputs(github GitHub, inputs *Inputs) error {
 	if inputs.Repository == "" {
-		inputs.Repository = strings.ToLower(github.Repository)
+		inputs.Repository = github.Repository
 	}
 
 	if inputs.Registry != "" && !strings.HasPrefix(inputs.Repository, inputs.Registry) {
@@ -30,7 +30,7 @@ func resolveInputs(github GitHub, inputs *Inputs) error {
 	resolveAutoTag(typ, name, inputs)
 
 	for i, t := range inputs.Tags {
-		inputs.Tags[i] = strings.Join([]string{inputs.Repository, t}, ":")
+		inputs.Tags[i] = strings.Join([]string{strings.ToLower(inputs.Repository), t}, ":")
 	}
 
 	return nil
