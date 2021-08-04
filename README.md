@@ -16,7 +16,7 @@ tag and push to docker default registry (docker.io). Repository name is your Git
 name by default.
 
 ```yaml
-- uses: jerray/publish-docker-action@master
+- uses: hartmutobendorf/publish-docker-action@main
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
@@ -30,12 +30,12 @@ You can set docker registry with `registry` argument. Change docker repository n
 For example:
 
 ```yaml
-- uses: jerray/publish-docker-action@master
+- uses: hartmutobendorf/publish-docker-action@main
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
     registry: docker.pkg.github.com
-    repository: jerray/publish-docker-action
+    repository: Chainstep/publish-docker-action
 ```
 
 This will build and push the tag `docker.pkg.github.com/jerray/publish-docker-action:latest`.
@@ -47,12 +47,12 @@ This will build and push the tag `docker.pkg.github.com/jerray/publish-docker-ac
 You can use static tag list by providing `tags` argument. Concat multiple tag names with commas.
 
 ```yaml
-- uses: jerray/publish-docker-action@master
+- uses: hartmutobendorf/publish-docker-action@main
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
     registry: docker.pkg.github.com
-    repository: jerray/publish-docker-action
+    repository: Chainstep/publish-docker-action
     tags: latest,newest,master
 ```
 
@@ -67,12 +67,12 @@ This example builds the image, creates three tags, and pushes all of them to the
 Set `with.auto_tag: true` to allow action generate docker image tags automatically.
 
 ```yaml
-- uses: jerray/publish-docker-action@master
+- uses: hartmutobendorf/publish-docker-action@main
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
     registry: docker.pkg.github.com
-    repository: jerray/publish-docker-action
+    repository: Chainstep/publish-docker-action
     auto_tag: true
 ```
 
@@ -100,12 +100,12 @@ Additionally, there's an output value `tag` you can use [in your next steps](htt
 
 ```yaml
 - id: build
-  uses: jerray/publish-docker-action@master
+  uses: hartmutobendorf/publish-docker-action@main
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
     registry: docker.pkg.github.com
-    repository: jerray/publish-docker-action
+    repository: Chainstep/publish-docker-action
     auto_tag: true
 
 - id: deploy
@@ -124,12 +124,12 @@ Provide `with.cache` argument to build from cache.
 Use `with.build_args` to provide docker build-time variables. Multiple variables must be separated by comma. 
 
 ```yaml
-- uses: jerray/publish-docker-action@master
+- uses: hartmutobendorf/publish-docker-action@main
   with:
     username: ${{ secrets.DOCKER_USERNAME }}
     password: ${{ secrets.DOCKER_PASSWORD }}
     registry: docker.pkg.github.com
-    repository: jerray/publish-docker-action
+    repository: Chainstep/publish-docker-action
     build_args: HTTP_PROXY=http://127.0.0.1,USER=nginx
 ```
 
