@@ -1,6 +1,6 @@
 name: 'Publish Docker Action'
 description: 'Build, tag and publish docker image to your docker registry'
-author: 'hartmutobendorf, jerray'
+author: 'chainstep, jerray'
 inputs:
   username:
     description: 'Username used to login docker registry'
@@ -48,7 +48,7 @@ outputs:
     description: 'Tag name produced by activating the auto_tag option'
 runs:
   using: 'docker'
-  image: 'docker://hartmutobendorf/publish-docker-action:1.0.0'
+  image: 'Dockerfile'
 branding:
   icon: 'anchor'
   color: 'blue'
